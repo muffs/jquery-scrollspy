@@ -9,6 +9,15 @@
 
   var containers = [];
 
+  window.wipeScrollEvents = function() {
+    console.log('wiping scroll events');
+    $.each(containers, function(index, $container) {
+      $container.unbind('scroll');
+    });
+
+    containers = [];
+  };
+
   $.fn.extend({
 
     scrollspy: function(options) {
@@ -27,7 +36,6 @@
       var options = $.extend({}, defaults, options);
 
       return this.each(function(i) {
-
         var element = this;
         var o = options;
         var $container = $(o.container);
@@ -98,14 +106,6 @@
         }); 
 
       });
-    },
-
-    scrollspyUnbind: function() {
-      $.each(containers, function(index, $container) {
-        $container.unbind('scroll');
-      });
-
-      containers = [];
     }
 
   });
