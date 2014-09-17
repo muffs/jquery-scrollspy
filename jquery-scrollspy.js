@@ -10,7 +10,6 @@
   var containers = [];
 
   window.wipeScrollEvents = function() {
-    console.log('wiping scroll events');
     $.each(containers, function(index, $container) {
       $container.unbind('scroll');
     });
